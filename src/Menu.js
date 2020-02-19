@@ -1,6 +1,6 @@
 import React, {
-  useState,
   forwardRef,
+  useContext,
 } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
@@ -14,6 +14,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import MenuList from './MenuList'
+import { Context, OPENMENU, CLOSEMENU } from './contexts/Context'
 
 const useStyle = makeStyles(theme => ({
   fab: {
@@ -38,22 +39,20 @@ const useStyle = makeStyles(theme => ({
   },
 }))
 
+
 const Transition = forwardRef(
-  (props, ref) => <Slide direction='up' ref={ref} {...props} />
+  (props, ref) => <Slide direction='up' ref={ ref } { ...props } />
 )
 
 export default props => {
   const classes = useStyle()
-
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const { state: {menuOpen}, dispatch } = useContext(Context)
 
   return (
     <div>
       <Dialog
-        open={ open }
-        onClose={ handleClose }
+        open={ menuOpen }
+        onClose={ () => dispatch({ type: CLOSEMENU }) }
         fullScreen
         TransitionComponent={ Transition }
         transitionDuration={{ enter: 300, exit: 100 }}
@@ -65,7 +64,7 @@ export default props => {
         <DialogTitle className={ classes.dialogTitle }>
           HANARE
           <IconButton
-            onClick={ handleClose }
+            onClick={ () => dispatch({ type: CLOSEMENU }) }
             color='primary'
             className={ classes.iconButton }
             children={ <ExpandMoreIcon /> }
@@ -76,7 +75,7 @@ export default props => {
         </DialogContent>
       </Dialog>
       <Fab
-        onClick={ handleOpen }
+        onClick={ () => dispatch({ type: OPENMENU }) }
         color='primary'
         className={ classes.fab }
         children={ <MenuIcon /> }

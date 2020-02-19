@@ -1,4 +1,8 @@
-import React, { useReducer, useMemo, forwardRef } from 'react'
+import React, {
+  useReducer,
+  useMemo,
+  useContext,
+  forwardRef } from 'react'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
@@ -11,19 +15,26 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 
+import { Context, RENDERLINK } from './contexts/Context'
+
 const useStyle = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
 }))
 
-const ListItemLink = ({primary, to}) => {
+const ListItemLink = ({ primary, to }) => {
+  const { dispatch } = useContext(Context)
   const renderLink = useMemo(() => forwardRef(
-    (itemProps, ref) => <Link to={to} ref={ref} {...itemProps} />
+    (itemProps, ref) => <Link to={ to } ref={ ref } { ...itemProps } />
   ), [to])
   return (
-    <ListItem button component={renderLink}>
-      <ListItemText primary={primary} />
+    <ListItem
+      button
+      component={ renderLink }
+      onClick={ () => dispatch({ type: RENDERLINK, title: primary }) }
+    >
+      <ListItemText primary={ primary } />
     </ListItem>
   )
 }
@@ -70,7 +81,7 @@ export default props => {
         <ListItemText primary="Contact Us"/>
         { expand.contactUs ? <ExpandLessIcon /> : <ExpandMoreIcon /> }
       </ListItem>
-      <Collapse in={expand.contactUs} timeout={300} unmountOnExit>
+      <Collapse in={ expand.contactUs } timeout={ 300 } unmountOnExit>
         <List component="div" disablePadding>
           <ListItem
             button
@@ -80,7 +91,7 @@ export default props => {
             target="_blank"
           >
             <ListItemIcon>
-              <FacebookIcon style={{color: '#3B5998'}} />
+              <FacebookIcon style={{ color: '#3B5998' }} />
             </ListItemIcon>
             <ListItemText primary="Facebook" />
           </ListItem>
@@ -92,7 +103,7 @@ export default props => {
             className={ classes.nested }
           >
             <ListItemIcon>
-              <TwitterIcon  style={{color: '#55ACEE'}} />
+              <TwitterIcon  style={{ color: '#55ACEE' }} />
             </ListItemIcon>
             <ListItemText primary="Twitter" />
           </ListItem>
@@ -112,7 +123,7 @@ export default props => {
             href="https://itba.doorkeeper.jp/"
             target="_blank"
           >
-            <ListItemText primary="Events" />
+            <ListItemText primary="Doorkeeper" style={{ color: '#0F4FF4' }}/>
           </ListItem>
         </List>
       </Collapse>

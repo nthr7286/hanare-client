@@ -9,11 +9,15 @@ import About from './pages/About'
 import Activities from './pages/Activities'
 import Works from './pages/Works'
 import Teams from './pages/Teams'
+
+import Header from './Header'
 import Menu from './Menu'
 
 export default props => {
   return (
     <Router>
+      <Header title="Home"/>
+      <Menu />
       <Route path="/home">
         <Home />
       </Route>
@@ -29,7 +33,6 @@ export default props => {
       <Route path="/teams">
         <Teams />
       </Route>
-      <Menu />
     </Router>
   )
 }
