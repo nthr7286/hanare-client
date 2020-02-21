@@ -87,7 +87,7 @@ export default props => {
             button
             className={ classes.nested }
             component="a"
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/groups/180704023349771"
             target="_blank"
           >
             <ListItemIcon>

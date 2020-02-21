@@ -17,8 +17,10 @@ import MenuList from './MenuList'
 import { Context, OPENMENU, CLOSEMENU } from './contexts/Context'
 
 const useStyle = makeStyles(theme => ({
+  root: {
+  },
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing(2),
     right: theme.spacing(2),
   },
@@ -49,7 +51,7 @@ export default props => {
   const { state: {menuOpen}, dispatch } = useContext(Context)
 
   return (
-    <div>
+    <div className={ classes.root }>
       <Dialog
         open={ menuOpen }
         onClose={ () => dispatch({ type: CLOSEMENU }) }

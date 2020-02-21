@@ -10,6 +10,7 @@ import { Context } from './contexts/Context'
 const useStyles = makeStyles(theme => ({
     root: {
           flexGrow: 1,
+          marginBottom: 56,
         },
     title: {
           flexGrow: 1,
@@ -21,7 +22,7 @@ export default props => {
   const { state: {appBarTitle} } = useContext(Context)
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             HANARE - {appBarTitle}
