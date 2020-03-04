@@ -4,38 +4,14 @@ import React, {
   useMemo
 } from 'react'
 
-export const Context = createContext()
-export const RENDERLINK = 'RENDERLINK'
-export const OPENMENU = 'OPENMENU'
-export const CLOSEMENU = 'CLOSEMENU'
+import {
+  reducer,
+  initialState
+} from './reducers/reducer'
 
-export default props => {
-  const initialState = {
-    appBarTitle: 'Home',
-    menuOpen: false,
-  }
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case RENDERLINK:
-        return {
-          ...state,
-          appBarTitle: action.title,
-          menuOpen: false,
-        }
-      case OPENMENU:
-        return {
-          ...state,
-          menuOpen: true
-        }
-      case CLOSEMENU:
-        return {
-          ...state,
-          menuOpen: false
-        }
-      default:
-        return state
-    }
-  }
+export const Context = createContext()
+
+export default ({children}) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const value = useMemo(
     () => ({ state, dispatch }),
@@ -43,7 +19,7 @@ export default props => {
   )
   return (
     <Context.Provider value={value}>
-      {props.children}
+      {children}
     </Context.Provider>
   )
 }

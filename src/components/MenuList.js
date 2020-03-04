@@ -15,7 +15,8 @@ import ExpandLessIcon from '@material-ui/icons/ExpandLess'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 
-import { Context, RENDERLINK } from './contexts/Context'
+import { Context } from '../contexts/Context'
+import { RENDERLINK } from '../contexts/types'
 
 const useStyle = makeStyles(theme => ({
   nested: {
@@ -75,7 +76,7 @@ export default props => {
       <ListItemLink to="/about" primary="About" />
       <ListItemLink to="/activities" primary="Activities" />
       <ListItemLink to="/works" primary="Works" />
-      <ListItemLink to="/teams" primary="Teams" />
+      <ListItemLink to="/teams" primary="Team Members" />
 
       <ListItem button onClick={ () => dispatch({ type: CONTACTUS }) }>
         <ListItemText primary="Contact Us"/>

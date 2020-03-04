@@ -14,33 +14,14 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 import MenuList from './MenuList'
-import { Context, OPENMENU, CLOSEMENU } from './contexts/Context'
+import { Context } from '../contexts/Context'
+import {
+  OPENMENU,
+  CLOSEMENU
+} from '../contexts/types'
+import { menuStyles as styles } from '../styles'
 
-const useStyle = makeStyles(theme => ({
-  root: {
-  },
-  fab: {
-    position: 'fixed',
-    bottom: theme.spacing(2),
-    right: theme.spacing(2),
-  },
-  dialog: {
-    marginTop: 56,
-  },
-  dialogTitle: {
-    position: 'relative',
-    textAlign: 'center'
-  },
-  iconButton: {
-    position: 'absolute',
-    top: theme.spacing(1),
-    left: theme.spacing(1),
-  },
-  nested: {
-    paddingLeft: theme.spacing(4),
-  },
-}))
-
+const useStyle = makeStyles(styles)
 
 const Transition = forwardRef(
   (props, ref) => <Slide direction='up' ref={ ref } { ...props } />

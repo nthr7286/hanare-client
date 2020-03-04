@@ -15,7 +15,7 @@ import Works from './pages/Works'
 import Teams from './pages/Teams'
 
 import Header from './Header'
-import Menu from './Menu'
+import Menu from './components/Menu'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,7 +32,7 @@ export default props => {
     { matches
       ? <div className={ classes.root }>
           <Typography variant="h5" component="p">
-            Please access with mobile.
+            Please access with a mobile.
           </Typography>
         </div>
       : <Router>

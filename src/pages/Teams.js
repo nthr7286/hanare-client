@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
 import images from '../images'
+import { userData } from '../data/userData'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,50 +36,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: '50%'
   }
 }))
-
-const userData = [
-  {
-    name: "深見 和弘",
-    jobTitle: "リーダー",
-    mbtiType: "ENFP",
-    img: images.fukami,
-    description: 'がんばります！！',
-    actions: [
-      { name: "facebook", to: "https://www.facebook.com/fukami.kazuhiro" },
-      { name: "youtube", to: "https://google.com" },
-    ]
-  },
-  {
-    name: "田中 翔麻",
-    jobTitle: "デザイナー",
-    mbtiType: "ENFP",
-    img: images.tanaka,
-    description: 'がんばります！！',
-    actions: [
-      { name: "facebook", to: "https://www.facebook.com/tanaka.shoma.7" },
-    ]
-  },
-  {
-    name: "渡辺 一史",
-    jobTitle: "リサーチャー",
-    mbtiType: "ENTP",
-    img: images.watanabe,
-    description: 'がんばります！！',
-    actions: [
-      { name: "facebook", to: "https://www.facebook.com/profile.php?id=100013838490199" },
-    ]
-  },
-  {
-    name: "久富 夏規",
-    jobTitle: "エンジニア",
-    mbtiType: "INFP",
-    img: null,
-    description: 'がんばります！！',
-    actions: [
-      { name: "facebook", to: "https://www.facebook.com/natsuki.kutomi.3" },
-    ]
-  },
-]
 
 const MemberProfileCard = ({
   data: { name, jobTitle, mbtiType, img, description, actions },
